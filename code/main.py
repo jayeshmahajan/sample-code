@@ -4,7 +4,7 @@ def get_value(obj, key):
 
     for k in keys:
         #print(k)
-        if isinstance(value, dict) and k in value:
+        if isinstance(value, dict) and k in value:  # if value is dictionary and key present in object
          #   print(value)
             value = value[k]
         else:
