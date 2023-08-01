@@ -1,5 +1,5 @@
 # Run as 
-python3 temp.py2
+python3 main.py
 
 # output
 ```
