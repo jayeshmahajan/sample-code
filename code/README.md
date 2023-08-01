@@ -1,7 +1,7 @@
 # How to run
 
 ```
-python3 nested.py
+python3 main.py
 d
 a
 Not found
