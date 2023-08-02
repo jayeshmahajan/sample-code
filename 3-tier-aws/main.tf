@@ -7,6 +7,10 @@ terraform {
   }
 }
 
+variable "cidr" { 
+  default = "10.1.0.0/16"
+}
+
 terraform {
   backend "s3" {
     bucket = "jayesh-tfstate"
@@ -23,7 +27,7 @@ module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
 
   name = "sample-vpc"
-  cidr = "10.1.0.0/16"
+  cidr = var.cidr
 
   azs             = ["us-east-1a", "us-east-1b", "us-east-1c"]
   private_subnets = ["10.1.1.0/24", "10.1.2.0/24", "10.1.3.0/24"]
@@ -37,3 +41,5 @@ module "vpc" {
     Environment = "dev"
   }
 }
+
+
