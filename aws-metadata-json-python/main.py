@@ -22,21 +22,21 @@ if __name__ == "__main__":
         metadata_dict2 = {}
         metadata_dict3 = {}
         for key in instance_metadata.splitlines():
-            if (key[-1]) == "/" :
+            if (key[-1]) == "/" :  # curl http://169.254.169.254/latest/meta-data/network/
                 metadata_path1 = "/latest/meta-data/" + key
                 metadata_dict1 = {}
                 for key1 in get_aws_metadata(metadata_path1).splitlines():
                     value1 = get_aws_metadata(metadata_path1 + f"/{key1}")
                     #print(key1)
                     #metadata_dict1[key1] = value1
-                    if (key1[-1]) == "/" :  # 2nd /ww/
+                    if (key1[-1]) == "/" :  # 2nd /ww/  # curl http://169.254.169.254/latest/meta-data/network/interfaces/
                         metadata_path2 = "/latest/meta-data/" + key + key1
                         metadata_dict2 = {}
                         for key2 in get_aws_metadata(metadata_path2).splitlines():
                             value2 = get_aws_metadata(metadata_path2 + f"/{key2}")
                             #metadata_dict2[key2] = value2
 
-                            if (key2[-1]) == "/" : # 3rd /ww/ww/
+                            if (key2[-1]) == "/" : # 3rd /ww/ww/  # curl http://169.254.169.254/latest/meta-data/network/interfaces/macs/
                               metadata_path3 = "/latest/meta-data/" + key + key1 + key2
                               metadata_dict3 = {}
                               for key3 in get_aws_metadata(metadata_path3).splitlines():
